@@ -53,9 +53,9 @@ namespace INTEXimdone
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
-            services.AddSingleton<InferenceSession>(
-                new InferenceSession("Models/utah_crash_severity.onnx")
-            );
+            //services.AddSingleton<InferenceSession>(
+            //    new InferenceSession("Models/utah_crash_severity.onnx")
+            //);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
