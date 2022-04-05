@@ -25,6 +25,11 @@ namespace INTEXimdone.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
+        public IActionResult PrivacyPolicy()
+        {
+            return View("PrivacyPolicy");
+        }
         public IActionResult SignIn()
         {
             return View();
