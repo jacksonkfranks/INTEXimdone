@@ -11,7 +11,7 @@ namespace INTEXimdone.Models
         [Key]
         [Required]
         public int CRASH_ID { get; set; }
-        public DateTime CRASH_DATETIME { get; set; }
+        public string CRASH_DATETIME { get; set; }
         public string ROUTE { get; set; }
         public float MILEPOINT { get; set; }
         public float LAT_UTM_Y { get; set; }
