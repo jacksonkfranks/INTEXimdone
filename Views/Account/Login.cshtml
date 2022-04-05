@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+@model LoginModel
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/custom.css" />
+
+    <!--Custom Tab Icon-->
+    <link rel="icon" href="~/img/book_generated.jpg" />
+
+</head>
+
+<body>
+
+    <div class="bg-light text-white p-2">
+        <span class="navbar-brand m-l-2" style="color:black; ">THE BEST BOOKSTORE</span>
+    </div>
+
+    <div class="m-1 p-1">
+
+        <div class="text-danger" asp-validation-summary="All"></div>
+
+        <form method="post" asp-controller="Account" asp-action="Login" class="jumbotron"
+              style="background-color: white; opacity: 0.9; width: 300px; align-content: center;
+                justify-content: center; align-items: center; position: relative; display: block; margin: auto;">
+
+            <div class="form-group">
+                <label asp-for="Username">User Name:</label>
+                <input asp-for="Username" class="form-control" style="width:200px; align-items: center;
+                    text-align: center; justify-content: center; position: relative; display: block; margin: auto;" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Password:</label>
+                <input asp-for="Password" class="form-control" type="password" style="width:200px; align-items: center;
+                    text-align: center; justify-content: center; position: relative; display: block; margin: auto;" />
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+                Log in
+            </button>
+            <input type="hidden" asp-for="ReturnUrl" />
+
+        </form>
+
+    </div>
+</body>
+
+</html>
