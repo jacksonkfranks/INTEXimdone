@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.ML.OnnxRuntime;
 
 namespace INTEXimdone
 {
@@ -51,6 +52,10 @@ namespace INTEXimdone
             services.AddScoped<ICrashRepository, EFCrashRepository>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            //services.AddSingleton<InferenceSession>(
+            //    new InferenceSession("Models/utah_crash_severity.onnx")
+            //);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

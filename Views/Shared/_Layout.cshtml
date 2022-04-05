@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="~/css/custom.css" />
 
     <!--Custom Tab Icon-->
-    <link rel="icon" href="~/img/ISlogo.png" />
+    <link rel="icon" href="~/img/ucdLogo.png" />
 
 </head>
 <body>
-    <header>
+    <header id="top">
         <nav class="navbar navbar-expand navbar-toggleable navbar-dark bg-white border-bottom shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Drive Safe Utah</a>
@@ -31,7 +31,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Temp">Temp</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignIn" style="margin-left: 750px;">Sign In</a>
+                            <btn class="btn btn-outline-primary" asp-area="" asp-controller="Home" asp-action="SignIn" style="margin-left: 750px; cursor: pointer;">Sign In</btn>
                         </li>
                     </ul>
                 </div>
@@ -39,20 +39,20 @@
         </nav>
         <br />
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <footer class="border-top footer text-muted shadow-sm">
-        <div class="container ">
-            &copy; Yeet- Intex 2022 <a asp-area="" asp-controller="Home"></a>
-        </div>
+    <footer class="border-top footer text-muted shadow-sm" style="background-color: white;">
+
+    <div class="container " style="text-align: center;">
+        &copy; Yeet- Intex 2022 <a asp-area="" asp-controller="Home" asp-action="PrivacyPolicy">Privacy & Cookies</a>
+    </div>
     </footer>
 </body>
 </html>
