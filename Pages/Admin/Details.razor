@@ -1,0 +1,81 @@
+﻿@page "/admin/crashes/details/{id:long}"
+
+<h3 class="bg-info text-white text-center p-1">Details</h3>
+
+<table class="table table-sm table-bordered table-hover">
+    <tbody>
+        <tr><th>Crash ID:</th><td>@c.CRASH_ID</td></tr>
+        <tr><th>Crash DateTime:</th><td>@c.CRASH_DATETIME</td></tr>
+        <tr><th>Route:</th><td>@c.ROUTE</td></tr>
+        <tr><th>Milepoint:</th><td>@c.MILEPOINT</td></tr>
+        <tr><th>Latitude:</th><td>@c.LAT_UTM_Y</td></tr>
+        <tr><th>Longitude:</th><td>@c.LONG_UTM_X</td></tr>
+        <tr><th>Main Road:</th><td>@c.MAIN_ROAD_NAME</td></tr>
+        <tr><th>City:</th><td>@c.CITY</td></tr>
+        <tr><th>County:</th><td>@c.COUNTY_NAME</td></tr>
+        <tr>
+            <th>Crash Severity:</th>
+            @if (c.CRASH_SEVERITY_ID == 1)
+            {
+                <td>
+                    No Injury/PDO
+                </td>
+            }
+            else if (c.CRASH_SEVERITY_ID == 2)
+            {
+                <td>Possible Injury</td>
+            }
+            else if (c.CRASH_SEVERITY_ID == 3)
+            {
+                <td>Suspected Minor Injury</td>
+            }
+            else if (c.CRASH_SEVERITY_ID == 4)
+            {
+                <td>Suspected Serious Injury</td>
+            }
+            else
+            {
+                <td>Fatal</td>
+            }
+        </tr>
+        <tr><th>Work Zone Related:</th><td>@c.WORK_ZONE_RELATED</td></tr>
+        <tr><th>Pedestrian Involved:</th><td>@c.PEDESTRIAN_INVOLVED</td></tr>
+        <tr><th>Bicyclist Involved:</th><td>@c.BICYCLIST_INVOLVED</td></tr>
+        <tr><th>Motorcycle Involved:</th><td>@c.MOTORCYCLE_INVOLVED</td></tr>
+        <tr><th>Improper Restraint:</th><td>@c.IMPROPER_RESTRAINT</td></tr>
+        <tr><th>Unrestrained:</th><td>@c.UNRESTRAINED</td></tr>
+        <tr><th>DUI:</th><td>@c.DUI</td></tr>
+        <tr><th>Intersection Related:</th><td>@c.INTERSECTION_RELATED</td></tr>
+        <tr><th>Wild Animal Related:</th><td>@c.WILD_ANIMAL_RELATED</td></tr>
+        <tr><th>Domestic Animal Related:</th><td>@c.DOMESTIC_ANIMAL_RELATED</td></tr>
+        <tr><th>Overturn/Rollover:</th><td>@c.OVERTURN_ROLLOVER</td></tr>
+        <tr><th>Commercial Motor Vehicle Involved:</th><td>@c.COMMERCIAL_MOTOR_VEH_INVOLVED</td></tr>
+        <tr><th>Teenage Driver Involved:</th><td>@c.TEENAGE_DRIVER_INVOLVED</td></tr>
+        <tr><th>Older Driver Involved:</th><td>@c.OLDER_DRIVER_INVOLVED</td></tr>
+        <tr><th>Night/Dark Conditions:</th><td>@c.NIGHT_DARK_CONDITION</td></tr>
+        <tr><th>Single Vehicle:</th><td>@c.SINGLE_VEHICLE</td></tr>
+        <tr><th>Distracted Driving:</th><td>@c.DISTRACTED_DRIVING</td></tr>
+        <tr><th>Drowsy Driving:</th><td>@c.DROWSY_DRIVING</td></tr>
+        <tr><th>Roadway Departure:</th><td>@c.ROADWAY_DEPARTURE</td></tr>
+    </tbody>
+</table>
+
+<NavLink class="btn btn-warning" href="@EditUrl">Edit</NavLink>
+<NavLink class="btn btn-secondary" href="/admin/crashes">Back</NavLink>
+
+@code {
+    [Inject]
+    public ICrashRepository repo { get; set; }
+
+    [Parameter]
+    public long Id { get; set; }
+
+    public Crash c { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        c = repo.Crashes.FirstOrDefault(x => x.CRASH_ID == Id);
+    }
+
+    public string EditUrl => $"/admin/crashes/edit/{c.CRASH_ID}";
+}
