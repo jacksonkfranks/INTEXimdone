@@ -28,7 +28,7 @@ namespace INTEXimdone.Controllers
             return View();
         }
 
-        [HttpPost] //Do I need this?
+        [HttpPost]
         public ActionResult Score(PredictionViewModel data)
         {
             var result = _session.Run(new List<NamedOnnxValue>
@@ -41,7 +41,6 @@ namespace INTEXimdone.Controllers
             var predictionView = new PredictionViewModel { PredictorData = data.PredictorData, Prediction = prediction };
             result.Dispose();
             return View("Calculator", predictionView);
-            //return Ok(prediction); // Change this
         }
     }
 }
