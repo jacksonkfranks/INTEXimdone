@@ -1,10 +1,9 @@
 ﻿@page "/admin/crashes"
 @page "/admin"
 @inherits OwningComponentBase<ICrashRepository>
-
-    <!-- <head> -->
-        <!--Custom Tab Icon-->
-        <!-- <link rel="icon" href="~/wwwroot/img/ucdLogo.png" />
+<!-- <head> -->
+<!--Custom Tab Icon-->
+<!-- <link rel="icon" href="~/wwwroot/img/ucdLogo.png" />
     </head>
 
 <table class="table table-sm table-striped table-bordered">
@@ -17,10 +16,8 @@
         </tr>
     </thead>
 
-    <tbody>
-        @if (CrashData?.Count() > 0)
-        {
-            @foreach (Crash c in CrashData) -->
+    <tbody>-->
+
 <div class="col-3">
 
     <div class="form-group">
@@ -36,7 +33,7 @@
             }
             else
             {
-                  <option value="Wait.."></option>
+                <option value="Wait.."></option>
             }
 
         </select>
@@ -152,18 +149,18 @@
                 <th>Accident Date</th>
                 <th>Accident City</th>
             </tr>
-        <!-- }
-    </tbody>
-</table>
+            <!-- }
+                </tbody>
+            </table>
 
-<NavLink class="btn btn-primary" href="/admin/crashes/create">Create</NavLink>
-<br /><br />
-<div class="float-right">
-    <button class="btn btn-outline-primary" @onclick="@First">First Page</button>
-    <button class="btn btn-outline-primary" @onclick="@Previous">Previous</button>
-    <button class="btn btn-primary">Page @pageNum</button>
-    <button class="btn btn-outline-primary" @onclick="@Next">Next</button>
-    <button class="btn btn-outline-primary" @onclick="@Last">Last Page</button> -->
+            <NavLink class="btn btn-primary" href="/admin/crashes/create">Create</NavLink>
+            <br /><br />
+            <div class="float-right">
+                <button class="btn btn-outline-primary" @onclick="@First">First Page</button>
+                <button class="btn btn-outline-primary" @onclick="@Previous">Previous</button>
+                <button class="btn btn-primary">Page @pageNum</button>
+                <button class="btn btn-outline-primary" @onclick="@Next">Next</button>
+                <button class="btn btn-outline-primary" @onclick="@Last">Last Page</button> -->
         </thead>
 
         <tbody>
