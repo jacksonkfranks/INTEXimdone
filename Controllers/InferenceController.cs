@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace INTEXimdone.Controllers
 {
-    public class InferenceController : ControllerBase
+    public class InferenceController : Controller
     {
         private InferenceSession _session;
 
@@ -19,7 +19,7 @@ namespace INTEXimdone.Controllers
             _session = session;
         }
 
-        [HttpPost]
+        [HttpPost] //Do I need this?
         public ActionResult Score(PredictorData data)
         {
             var result = _session.Run(new List<NamedOnnxValue>
@@ -29,7 +29,7 @@ namespace INTEXimdone.Controllers
             Tensor<float> score = result.First().AsTensor<float>();
             var prediction = new Prediction { PredictedValue = score.First() };
             result.Dispose();
-            return Ok(prediction);
+            return Ok(prediction); // Change this
         }
     }
 }
