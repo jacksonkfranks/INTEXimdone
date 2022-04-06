@@ -24,7 +24,7 @@ namespace INTEXimdone
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method gets called by the runtime
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(options =>
@@ -42,15 +42,17 @@ namespace INTEXimdone
                     options.ClientSecret = "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";
                 });
 
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
+
+            services.AddDbContext<CrashDbContext>(options =>
+            
+                options.UseMySql(Configuration.GetConnectionString("CrashDataDbConnection"))
+            );
 
             services.AddControllersWithViews();
-            services.AddDbContext<CrashDbContext>(options =>
-            {
-                options.UseMySql(Configuration["ConnectionStrings:CrashDataDbConnection"]);
-            });
-
-            services.AddScoped<ICrashRepository, EFCrashRepository>();
             services.AddRazorPages();
+            services.AddScoped<ICrashRepository, EFCrashRepository>();
             services.AddServerSideBlazor();
 
             //services.AddSingleton<InferenceSession>(
