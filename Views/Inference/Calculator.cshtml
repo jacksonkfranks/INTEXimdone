@@ -1,0 +1,120 @@
+﻿@{
+}
+
+@model PredictionViewModel
+
+<form method="post" asp-controller="Inference" asp-action="Score">
+
+
+    <input type="hidden" asp-for="@Model.PredictorData.route" value=2082.00000 />
+    <input type="hidden" asp-for="@Model.PredictorData.milepoint" value=2.702000 />
+    <input type="hidden" asp-for="@Model.PredictorData.lat_utm_y" value=4.483701e+06 />
+    <input type="hidden" asp-for="@Model.PredictorData.long_utm_x" value=427458.669400 />
+    <input type="hidden" asp-for="@Model.PredictorData.county_name_Other" value=0 />
+
+    @*<p>option1 </p>
+    <input type="radio" name="option1" value="0" id="Select" />Select
+    <input type="radio" name="option1" value="1" id="coffee" />Coffee
+
+    <p>option2</p>
+    <input type="radio" name="option2" value="0" id="Select" />Select
+    <input type="radio" name="option2" value="1" id="White" />White
+    <input type="radio" name="option2" value="2" id="Black" />Black
+
+    <p>option3</p>
+    <input type="radio" name="option3" value="0" id="Select" />Select
+    <input type="radio" name="option3" value="1" id="std" />STD
+    <input type="radio" name="option3" value="2" id="300" />300
+    <input type="radio" name="option3" value="3" id="500" />500*@
+
+    @*<label>Pedestrian Involved</label>
+    <input type="radio" name="option1" asp-for="@Model.PredictorData.pedestrian_involved" value="1" id="True" />True
+    <input type="radio" name="option1" asp-for="@Model.PredictorData.pedestrian_involved" value="0" id="False" />False
+    <br />
+
+    <label>Motorcycle Involved</label>
+    <input type="radio" name="option2" asp-for="@Model.PredictorData.motorcycle_involved" value="1" id="True" />True
+    <input type="radio" name="option2" asp-for="@Model.PredictorData.motorcycle_involved" value="0" id="False" />False
+    <br />
+
+    <label>Improper Restraint</label>
+    <input type="radio" name="option3" asp-for="@Model.PredictorData.improper_restraint" value="1" id="True" />True
+    <input type="radio" name="option3" asp-for="@Model.PredictorData.improper_restraint" value="0" id="False" />False
+    <br />*@
+
+    <label>Pedestrian Involved</label>
+        <select type="checkbox" asp-for="@Model.PredictorData.pedestrian_involved">
+            <option value="0">False</option>
+            <option value="1">True</option>
+        </select> <br>
+
+        <label>Motorcycle Involved</label>
+        <select asp-for="@Model.PredictorData.motorcycle_involved">
+            <option type="checkbox" value="0">False</option>
+            <option value="1">True</option>
+        </select> <br>
+
+        <label>Improper Restraint</label>
+        <select asp-for="@Model.PredictorData.improper_restraint">
+            <option value="0">False</option>
+            <option value="1">True</option>
+        </select> <br>
+
+    <label>DUI</label>
+    <select asp-for="@Model.PredictorData.dui">
+        <option value="0">False</option>
+        <option value="1">True</option>
+    </select> <br>
+
+    <label>Intersection Related</label>
+    <select asp-for="@Model.PredictorData.intersection_related">
+        <option value="0">False</option>
+        <option value="1">True</option>
+    </select> <br>
+
+    <label>Overturn or Rollover</label>
+    <select asp-for="@Model.PredictorData.overturn_rollover">
+        <option value="0">False</option>
+        <option value="1">True</option>
+    </select> <br>
+
+    <label>Teenage Driver Involved</label>
+    <select asp-for="@Model.PredictorData.teenage_driver_involved">
+        <option value="0">False</option>
+        <option value="1">True</option>
+    </select> <br>
+
+    <label>Older Driver Involved</label>
+    <select asp-for="@Model.PredictorData.older_driver_involved">
+        <option value="0">False</option>
+        <option value="1">True</option>
+    </select> <br>
+
+    <label>Dark Night Condition</label>
+    <select asp-for="@Model.PredictorData.night_dark_condition">
+        <option value="0">False</option>
+        <option value="1">True</option>
+    </select> <br>
+
+    <label>Single Vehicle</label>
+    <select asp-for="@Model.PredictorData.single_vehicle">
+        <option value="0">False</option>
+        <option value="1">True</option>
+    </select> <br>
+
+    <label>Distracted Driving</label>
+    <select asp-for="@Model.PredictorData.distracted_driving">
+        <option value="0">False</option>
+        <option value="1">True</option>
+    </select> <br>
+
+    <span class="card-text">
+        <button type="submit" class="btn btn-success btn-sm float-end">Generate Prediction</button>
+    </span>
+
+</form>
+
+<h3>Prediction: @Model?.Prediction.PredictedValue</h3>
+
+
+

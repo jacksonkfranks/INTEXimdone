@@ -2,9 +2,9 @@
 @page "/admin"
 @inherits OwningComponentBase<ICrashRepository>
 
-    <head>
+    <!-- <head> -->
         <!--Custom Tab Icon-->
-        <link rel="icon" href="~/wwwroot/img/ucdLogo.png" />
+        <!-- <link rel="icon" href="~/wwwroot/img/ucdLogo.png" />
     </head>
 
 <table class="table table-sm table-striped table-bordered">
@@ -20,33 +20,139 @@
     <tbody>
         @if (CrashData?.Count() > 0)
         {
-            @foreach (Crash c in CrashData)
+            @foreach (Crash c in CrashData) -->
+<div class="col-3">
+
+    <div class="form-group">
+        <label>City</label>
+        <select class="form-control" @onchange="@UpdateCity">
+            @if (Cities?.Count() > 0)
             {
-                <tr>
-                    <td>@c.CRASH_ID</td>
-                    <td>@c.CRASH_DATETIME</td>
-                    <td>@c.CITY</td>
-
-                    <td>
-                        <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(c.CRASH_ID)">Details</NavLink>
-                    </td>
-
-                    <td>
-                        <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(c.CRASH_ID)">Edit</NavLink>
-                    </td>
-
-                    <td>
-                        <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveCrash(c))">Delete</button>
-                    </td>
-                </tr>
+                <option value="all">All Cities</option>
+                @foreach (string city in Cities)
+                {
+                    <option value="@city">@city</option>
+                }
             }
-        }
-        else
-        {
+            else
+            {
+                  <option value="Wait.."></option>
+            }
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label>County</label>
+        <select class="form-control" @onchange="@UpdateCounty">
+            @if (Counties?.Count() > 0)
+            {
+                <option value="all">All Counties</option>
+                @foreach (string county in Counties)
+                {
+                    <option value="@county">@county</option>
+                }
+            }
+            else
+            {
+                <option value="">Wait...</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Crash Severity</label>
+        <select class="form-control" @onchange="@UpdateCrashSeverity">
+            <option value="">All</option>
+            <option value="1">No injury/PDO</option>
+            <option value="2">Possible injury</option>
+            <option value="3">Suspected Minor Injury</option>
+            <option value="4">Suspected Serious Injury</option>
+            <option value="5">Fatal</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Pedestrian Involved</label>
+        <input type="checkbox" @onchange="@UpdatePedestrianInvolved" />
+    </div>
+    <div class="form-group">
+        <label>Bicyclist Involved</label>
+        <input type="checkbox" @onchange="@UpdateBicyclistInvolved" />
+    </div>
+    <div class="form-group">
+        <label>Motorcycle Involved</label>
+        <input type="checkbox" @onchange="@UpdateMotorcycleInvolved" />
+    </div>
+    <div class="form-group">
+        <label>Improper Restraint</label>
+        <input type="checkbox" @onchange="@UpdateImproperRestraint" />
+    </div>
+    <div class="form-group">
+        <label>Unrestrained</label>
+        <input type="checkbox" @onchange="@UpdateUnrestrained" />
+    </div>
+    <div class="form-group">
+        <label>DUI</label>
+        <input type="checkbox" @onchange="@UpdateDUI" />
+    </div>
+    <div class="form-group">
+        <label>Intersection Related</label>
+        <input type="checkbox" @onchange="@UpdateIntersectionRelated" />
+    </div>
+    <div class="form-group">
+        <label>Wild Animal Related</label>
+        <input type="checkbox" @onchange="@UpdateWildAnimalRelated" />
+    </div>
+    <div class="form-group">
+        <label>Domestic Animal Related</label>
+        <input type="checkbox" @onchange="@UpdateDomesticAnimalRelated" />
+    </div>
+    <div class="form-group">
+        <label>Overturn/Rollover</label>
+        <input type="checkbox" @onchange="@UpdateOverturnRollover" />
+    </div>
+    <div class="form-group">
+        <label>Commercial Motor Vehicle Involved</label>
+        <input type="checkbox" @onchange="@UpdateCommercialMotorVehInvolved" />
+    </div>
+    <div class="form-group">
+        <label>Teenage Driver Involved</label>
+        <input type="checkbox" @onchange="@UpdateTeenageDriverInvolved" />
+    </div>
+    <div class="form-group">
+        <label>Older Driver Involved</label>
+        <input type="checkbox" @onchange="@UpdateOlderDriverInvolved" />
+    </div>
+    <div class="form-group">
+        <label>Night/Dark Conditions</label>
+        <input type="checkbox" @onchange="@UpdateNightDarkCondition" />
+    </div>
+    <div class="form-group">
+        <label>Single Vehicle</label>
+        <input type="checkbox" @onchange="@UpdateSingleVehicle" />
+    </div>
+    <div class="form-group">
+        <label>Distracted Driving</label>
+        <input type="checkbox" @onchange="@UpdateDistractedDriving" />
+    </div>
+    <div class="form-group">
+        <label>Drowsy Driving</label>
+        <input type="checkbox" @onchange="@UpdateDrowsyDriving" />
+    </div>
+    <div class="form-group">
+        <label>Roadway Departure</label>
+        <input type="checkbox" @onchange="@UpdateRoadwayDeparture" />
+    </div>
+</div>
+
+<div class="col-9">
+    <table class="table table-sm table-striped table-bordered">
+
+        <thead>
             <tr>
-                <td colespan="5" class="text-center">No Crashes</td>
+                <th>Accident ID</th>
+                <th>Accident Date</th>
+                <th>Accident City</th>
             </tr>
-        }
+        <!-- }
     </tbody>
 </table>
 
@@ -57,26 +163,293 @@
     <button class="btn btn-outline-primary" @onclick="@Previous">Previous</button>
     <button class="btn btn-primary">Page @pageNum</button>
     <button class="btn btn-outline-primary" @onclick="@Next">Next</button>
-    <button class="btn btn-outline-primary" @onclick="@Last">Last Page</button>
+    <button class="btn btn-outline-primary" @onclick="@Last">Last Page</button> -->
+        </thead>
+
+        <tbody>
+            @if (CrashData?.Count() > 0)
+            {
+                @foreach (Crash c in CrashData)
+                {
+                    <tr>
+                        <td>@c.CRASH_ID</td>
+                        <td>@c.CRASH_DATETIME</td>
+                        <td>@c.CITY</td>
+
+                        <td>
+                            <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(c.CRASH_ID)">Details</NavLink>
+                        </td>
+
+                        <td>
+                            <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(c.CRASH_ID)">Edit</NavLink>
+                        </td>
+
+                        <td>
+                            <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveCrash(c))">Delete</button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colespan="5" class="text-center">No Crashes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <NavLink class="btn btn-primary" href="/admin/crashes/create">Create</NavLink>
+    <br />
+    <div class="float-right">
+        <button class="btn btn-outline-primary" @onclick="@First">Page 1</button>
+        <button class="btn btn-outline-primary" @onclick="@Previous">Previous</button>
+        <button class="btn btn-primary">Page @pageNum</button>
+        <button class="btn btn-outline-primary" @onclick="@Next">Next</button>
+        <button class="btn btn-outline-primary" @onclick="@Last">Page @totalPages</button>
+    </div>
 </div>
 
 @code {
 
     public ICrashRepository repo => Service;
     public IEnumerable<Crash> CrashData { get; set; }
-    private int totalPages => (int)Math.Ceiling((double)repo.Crashes.Count() / pageSize);
+    public IEnumerable<string> Cities { get; set; }
+    public IEnumerable<string> Counties { get; set; }
+    private int totalPages;
     private int pageSize = 20;
     private int pageNum = 1;
+    public string crashdate { get; set; }
+    public string route { get; set; }
+    public float mp { get; set; }
+    public float lat { get; set; }
+    public float longitude { get; set; }
+    public string mrn { get; set; }
+    public string city { get; set; }
+    public string county { get; set; }
+    public int crashseverity { get; set; }
+    public bool workzone { get; set; }
+    public bool pedestrian { get; set; }
+    public bool bicyclist { get; set; }
+    public bool motorcycle { get; set; }
+    public bool improper { get; set; }
+    public bool unrestrained { get; set; }
+    public bool dui { get; set; }
+    public bool intersection { get; set; }
+    public bool wildanimal { get; set; }
+    public bool domanimal { get; set; }
+    public bool overturnrollover { get; set; }
+    public bool commotorvehicle { get; set; }
+    public bool teenagedriver { get; set; }
+    public bool olderdriver { get; set; }
+    public bool nightdark { get; set; }
+    public bool singlevehicle { get; set; }
+    public bool distracted { get; set; }
+    public bool drowsy { get; set; }
+    public bool roadway { get; set; }
 
 
     protected async override Task OnInitializedAsync()
     {
         await UpdateData();
+        await GetLists();
     }
 
     public async Task UpdateData()
     {
-        CrashData = await repo.Crashes.Skip((pageNum - 1) * pageSize).Take(pageSize).ToListAsync();
+        CrashData = await repo.Crashes
+                .Where(c => c.CITY == city || city == null)
+                .Where(c => c.COUNTY_NAME == county || county == null)
+                .Where(c => c.CRASH_SEVERITY_ID == crashseverity || crashseverity == 0)
+                .Where(c => c.PEDESTRIAN_INVOLVED == pedestrian || pedestrian == false)
+                .Where(c => c.BICYCLIST_INVOLVED == bicyclist || bicyclist == false)
+                .Where(c => c.MOTORCYCLE_INVOLVED == motorcycle || motorcycle == false)
+                .Where(c => c.IMPROPER_RESTRAINT == improper || improper == false)
+                .Where(c => c.UNRESTRAINED == unrestrained || unrestrained == false)
+                .Where(c => c.DUI == dui || dui == false)
+                .Where(c => c.INTERSECTION_RELATED == intersection || intersection == false)
+                .Where(c => c.WILD_ANIMAL_RELATED == wildanimal || wildanimal == false)
+                .Where(c => c.DOMESTIC_ANIMAL_RELATED == domanimal || domanimal == false)
+                .Where(c => c.OVERTURN_ROLLOVER == overturnrollover || overturnrollover == false)
+                .Where(c => c.COMMERCIAL_MOTOR_VEH_INVOLVED == commotorvehicle || commotorvehicle == false)
+                .Where(c => c.TEENAGE_DRIVER_INVOLVED == teenagedriver || teenagedriver == false)
+                .Where(c => c.OLDER_DRIVER_INVOLVED == olderdriver || olderdriver == false)
+                .Where(c => c.NIGHT_DARK_CONDITION == nightdark || nightdark == false)
+                .Where(c => c.SINGLE_VEHICLE == singlevehicle || singlevehicle == false)
+                .Where(c => c.DISTRACTED_DRIVING == distracted || distracted == false)
+                .Where(c => c.DROWSY_DRIVING == drowsy || drowsy == false)
+                .Where(c => c.ROADWAY_DEPARTURE == roadway || roadway == false)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        totalPages = (int)Math.Ceiling((double)repo.Crashes
+                .Where(c => c.CITY == city || city == null)
+                .Where(c => c.COUNTY_NAME == county || county == null)
+                .Where(c => c.CRASH_SEVERITY_ID == crashseverity || crashseverity == 0)
+                .Where(c => c.PEDESTRIAN_INVOLVED == pedestrian || pedestrian == false)
+                .Where(c => c.BICYCLIST_INVOLVED == bicyclist || bicyclist == false)
+                .Where(c => c.MOTORCYCLE_INVOLVED == motorcycle || motorcycle == false)
+                .Where(c => c.IMPROPER_RESTRAINT == improper || improper == false)
+                .Where(c => c.UNRESTRAINED == unrestrained || unrestrained == false)
+                .Where(c => c.DUI == dui || dui == false)
+                .Where(c => c.INTERSECTION_RELATED == intersection || intersection == false)
+                .Where(c => c.WILD_ANIMAL_RELATED == wildanimal || wildanimal == false)
+                .Where(c => c.DOMESTIC_ANIMAL_RELATED == domanimal || domanimal == false)
+                .Where(c => c.OVERTURN_ROLLOVER == overturnrollover || overturnrollover == false)
+                .Where(c => c.COMMERCIAL_MOTOR_VEH_INVOLVED == commotorvehicle || commotorvehicle == false)
+                .Where(c => c.TEENAGE_DRIVER_INVOLVED == teenagedriver || teenagedriver == false)
+                .Where(c => c.OLDER_DRIVER_INVOLVED == olderdriver || olderdriver == false)
+                .Where(c => c.NIGHT_DARK_CONDITION == nightdark || nightdark == false)
+                .Where(c => c.SINGLE_VEHICLE == singlevehicle || singlevehicle == false)
+                .Where(c => c.DISTRACTED_DRIVING == distracted || distracted == false)
+                .Where(c => c.DROWSY_DRIVING == drowsy || drowsy == false)
+                .Where(c => c.ROADWAY_DEPARTURE == roadway || roadway == false).Count() / pageSize);
+    }
+
+    public async Task UpdatePageSize(ChangeEventArgs args)
+    {
+        pageSize = Convert.ToInt32(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateCity(ChangeEventArgs args)
+    {
+        city = args.Value.ToString();
+        if (city == "all")
+        {
+            city = null;
+        }
+        await UpdateData();
+    }
+
+    public async Task UpdateCounty(ChangeEventArgs args)
+    {
+        county = args.Value.ToString();
+        if (county == "all")
+        {
+            county = null;
+        }
+        await UpdateData();
+    }
+
+    public async Task UpdateCrashSeverity(ChangeEventArgs args)
+    {
+        crashseverity = Convert.ToInt32(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdatePedestrianInvolved(ChangeEventArgs args)
+    {
+        pedestrian = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateBicyclistInvolved(ChangeEventArgs args)
+    {
+        bicyclist = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateMotorcycleInvolved(ChangeEventArgs args)
+    {
+        motorcycle = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateImproperRestraint(ChangeEventArgs args)
+    {
+        improper = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateUnrestrained(ChangeEventArgs args)
+    {
+        unrestrained = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateDUI(ChangeEventArgs args)
+    {
+        dui = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateIntersectionRelated(ChangeEventArgs args)
+    {
+        intersection = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateWildAnimalRelated(ChangeEventArgs args)
+    {
+        wildanimal = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateDomesticAnimalRelated(ChangeEventArgs args)
+    {
+        domanimal = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateOverturnRollover(ChangeEventArgs args)
+    {
+        overturnrollover = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateCommercialMotorVehInvolved(ChangeEventArgs args)
+    {
+        commotorvehicle = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateTeenageDriverInvolved(ChangeEventArgs args)
+    {
+        teenagedriver = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateOlderDriverInvolved(ChangeEventArgs args)
+    {
+        olderdriver = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateNightDarkCondition(ChangeEventArgs args)
+    {
+        nightdark = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateSingleVehicle(ChangeEventArgs args)
+    {
+        singlevehicle = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateDistractedDriving(ChangeEventArgs args)
+    {
+        distracted = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateDrowsyDriving(ChangeEventArgs args)
+    {
+        drowsy = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task UpdateRoadwayDeparture(ChangeEventArgs args)
+    {
+        roadway = Convert.ToBoolean(args.Value);
+        await UpdateData();
+    }
+
+    public async Task GetLists()
+    {
+        Cities = await repo.Crashes.Select(c => c.CITY).Distinct().OrderBy(c => c).ToListAsync();
+        Counties = await repo.Crashes.Select(c => c.COUNTY_NAME).Distinct().OrderBy(c => c).ToListAsync();
     }
 
     public string GetDetailsUrl(long id) => $"/admin/crashes/details/{id}";
@@ -123,5 +496,50 @@
         }
         await UpdateData();
     }
+
+    //public string GetDetailsUrl(long id) => $"/admin/crashes/details/{id}";
+    //public string GetEditUrl(long id) => $"/admin/crashes/edit/{id}";
+
+    //public async Task RemoveCrash(Crash c)
+    //{
+    //    repo.DeleteCrash(c);
+    //    await UpdateData();
+    //}
+
+    //public async Task Next()
+    //{
+    //    if (pageNum != totalPages)
+    //    {
+    //        pageNum = pageNum + 1;
+    //    }
+    //    await UpdateData();
+    //}
+
+    //public async Task Previous()
+    //{
+    //    if (pageNum != 1)
+    //    {
+    //        pageNum = pageNum - 1;
+    //    }
+    //    await UpdateData();
+    //}
+
+    //public async Task First()
+    //{
+    //    if (pageNum != 1)
+    //    {
+    //        pageNum = 1;
+    //    }
+    //    await UpdateData();
+    //}
+
+    //public async Task Last()
+    //{
+    //    if (pageNum != totalPages)
+    //    {
+    //        pageNum = totalPages;
+    //    }
+    //    await UpdateData();
+    //}
 
 }
