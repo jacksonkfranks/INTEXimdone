@@ -2,6 +2,11 @@
 @page "/admin"
 @inherits OwningComponentBase<ICrashRepository>
 
+    <head>
+        <!--Custom Tab Icon-->
+        <link rel="icon" href="~/wwwroot/img/ucdLogo.png" />
+    </head>
+
 <table class="table table-sm table-striped table-bordered">
 
     <thead>
@@ -46,9 +51,9 @@
 </table>
 
 <NavLink class="btn btn-primary" href="/admin/crashes/create">Create</NavLink>
-<br />
+<br /><br />
 <div class="float-right">
-    <button class="btn btn-outline-primary" @onclick="@First">Page 1</button>
+    <button class="btn btn-outline-primary" @onclick="@First">First Page</button>
     <button class="btn btn-outline-primary" @onclick="@Previous">Previous</button>
     <button class="btn btn-primary">Page @pageNum</button>
     <button class="btn btn-outline-primary" @onclick="@Next">Next</button>

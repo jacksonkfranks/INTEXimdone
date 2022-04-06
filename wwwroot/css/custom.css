@@ -8,6 +8,9 @@
 }
 
 /*NEW STUFF HERE*/
+
+
+
 header::after {
     content: '';
     display: table;
@@ -222,7 +225,7 @@ h1 {
     left: 1rem;
     top: 1rem;
     padding: 0 .25rem;
-    background-color: #FAFDFF;
+    background-color: white;
     color: var(--input-color);
     font-size: var(--normal-font-size);
     transition: .3s;
