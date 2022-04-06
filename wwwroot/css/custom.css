@@ -7,6 +7,57 @@
     width: 100%;
 }
 
+/*NEW STUFF HERE*/
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+/*spacing between items in navbar*/
+    margin-left: 70px;
+    padding-top: 23px;
+
+    position: relative;
+}
+
+nav a {
+    color: #459BDF;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #3171F6;
+    text-decoration: none;
+}
+
+nav a:before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #459BDF;
+    position: absolute;
+    top: 0;
+    width: 0%;
+    transition: all ease-in-out 235ms;
+}
+
+nav a:hover:before {
+    width: 100%;
+}
+
+
+/*END NEW STUFF*/
 #footer {
     position: fixed;
     bottom: 0;

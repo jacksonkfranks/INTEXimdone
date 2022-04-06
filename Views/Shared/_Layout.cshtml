@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <header id="top">
+    @*<header id="top">
         <nav class="navbar navbar-expand navbar-toggleable navbar-dark bg-white border-bottom shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Drive Safe Utah</a>
@@ -38,7 +38,27 @@
             </div>
         </nav>
         <br />
+    </header>*@
+
+    <header style="background-color: white;">
+        <div class="container" style="width: 80%; margin: 0 auto;">
+
+            <img src="~/img/minLogo.png" alt="logo" class="logo" style="float: left; padding: 10px 0;"/>
+
+            <nav style="float: right;">
+                <ul>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Temp">Predictor</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="SignIn">Login</a></li>
+
+                </ul>
+
+            </nav>
+            <br />
+
+        </div>
     </header>
+    <br />
 
     <main role="main" class="pb-3">
         @RenderBody()
