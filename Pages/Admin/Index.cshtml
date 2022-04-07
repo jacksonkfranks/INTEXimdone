@@ -14,13 +14,21 @@
 
 <head>
     <title>Crashes Admin</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/custom.css" />
     <base href="~/" />
+
+    <!--Custom Tab Icon-->
+    <link rel="icon" href="~/img/ucdLogo.png" />
 </head>
 
 <body>
-    <component type="typeof(INTEXimdone.Pages.Admin.Routed)" render-mode="Server" />
-    <script src="/_framework/blazor.server.js"></script>
+        <component type="typeof(INTEXimdone.Pages.Admin.Routed)" render-mode="Server" />
+        <script src="/_framework/blazor.server.js"></script>
 </body>
 
 </html>

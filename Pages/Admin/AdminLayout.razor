@@ -1,28 +1,76 @@
 ﻿@inherits LayoutComponentBase
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Admin</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>*@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Crashes Admin</title>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/custom.css" />
+        <base href="~/" />
 
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Admin</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
+        <!--Custom Tab Icon-->
+        <link rel="icon" href="~/img/ucdLogo.png" />
+    </head>
+
+    @*EXAMPLE FROM THE BOOKSTORE PROJECT
+        <div class="d-grid gap-2">
+        <NavLink class="btn btn-outline-primary" href="/admin/books"
+                 ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Books</NavLink>
+        <br />
+        <br />
+        <NavLink class="btn btn-outline-primary" href="/admin/orders"
+                 ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Orders</NavLink>
+    </div>*@
+
+    <header style="background-color: white;">
+        <div class="container" style="width: 80%; margin: 0 auto;">
+
+            <img src="~/img/minLogo.png" alt="logo" class="logo" style="float: left; padding: 10px 0;" />
+
+            <nav style="float: right;">
+                <ul>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Temp">Predictor</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="SignIn">Logout</a></li>
+
                 </ul>
+
+            </nav>
+            <br />
+
+        </div>
+    </header>
+    <br />
+    <body>
+
+        <div class="container-fluid">
+            <div class="row p-2">
+                <div class="container text-center rounded shadow-lg" style="background-color: white; padding: 30px;">
+                    @Body
+                </div>
             </div>
         </div>
-    </nav>
-</header>
-
-<div class="container-fluid">
-    <div class="row p-2">
-        <div>
-            @Body
-        </div>
-    </div>
-</div>
+        <br />
+    </body>
+    </html>

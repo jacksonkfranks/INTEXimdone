@@ -1,6 +1,22 @@
 ﻿@page "/admin/crashes"
 @page "/admin"
 @inherits OwningComponentBase<ICrashRepository>
+<!-- <head> -->
+<!--Custom Tab Icon-->
+<!-- <link rel="icon" href="~/wwwroot/img/ucdLogo.png" />
+    </head>
+
+<table class="table table-sm table-striped table-bordered">
+
+    <thead>
+        <tr>
+            <th>Accident ID</th>
+            <th>Accident Date</th>
+            <th>Accident City</th>
+        </tr>
+    </thead>
+
+    <tbody>-->
 
 <div class="col-3">
 
@@ -17,7 +33,7 @@
             }
             else
             {
-                  <option value="Wait.."></option>
+                <option value="Wait.."></option>
             }
 
         </select>
@@ -133,6 +149,18 @@
                 <th>Accident Date</th>
                 <th>Accident City</th>
             </tr>
+            <!-- }
+                </tbody>
+            </table>
+
+            <NavLink class="btn btn-primary" href="/admin/crashes/create">Create</NavLink>
+            <br /><br />
+            <div class="float-right">
+                <button class="btn btn-outline-primary" @onclick="@First">First Page</button>
+                <button class="btn btn-outline-primary" @onclick="@Previous">Previous</button>
+                <button class="btn btn-primary">Page @pageNum</button>
+                <button class="btn btn-outline-primary" @onclick="@Next">Next</button>
+                <button class="btn btn-outline-primary" @onclick="@Last">Last Page</button> -->
         </thead>
 
         <tbody>
