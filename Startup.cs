@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.ML.OnnxRuntime;
+using INTEXimdone.Data;
 
 namespace INTEXimdone
 {
@@ -47,6 +48,11 @@ namespace INTEXimdone
 
             services.AddDbContext<CrashDbContext>(options =>
             
+                options.UseMySql(Configuration.GetConnectionString("CrashDataDbConnection"))
+            );
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+
                 options.UseMySql(Configuration.GetConnectionString("CrashDataDbConnection"))
             );
 
