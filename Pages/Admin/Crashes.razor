@@ -17,130 +17,189 @@
     </thead>
 
     <tbody>-->
+<div class="container text-center rounded shadow-lg" style="background-color: white; padding-top: 20px; width: 80%;">
 
-<div class="col-3">
+    <h2>Filter Crashes</h2>
 
-    <div class="form-group">
-        <label>City</label>
-        <select class="form-control" @onchange="@UpdateCity">
-            @if (Cities?.Count() > 0)
-            {
-                <option value="all">All Cities</option>
-                @foreach (string city in Cities)
-                {
-                    <option value="@city">@city</option>
-                }
-            }
-            else
-            {
-                <option value="Wait.."></option>
-            }
+    <div class="parent">
+        <div class="child">
+            <div class="form-group">
+                <label>City</label>
+                <select class="form-control" @onchange="@UpdateCity">
+                    @if (Cities?.Count() > 0)
+                    {
+                        <option value="all">All Cities</option>
+                        @foreach (string city in Cities)
+                        {
+                            <option value="@city">@city</option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="Wait.."></option>
+                    }
 
-        </select>
+                </select>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <label>County</label>
+                <select class="form-control" @onchange="@UpdateCounty">
+                    @if (Counties?.Count() > 0)
+                    {
+                        <option value="all">All Counties</option>
+                        @foreach (string county in Counties)
+                        {
+                            <option value="@county">@county</option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="">Wait...</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <label>Crash Severity</label>
+                <select class="form-control" @onchange="@UpdateCrashSeverity">
+                    <option value="">All</option>
+                    <option value="1">No injury/PDO</option>
+                    <option value="2">Possible injury</option>
+                    <option value="3">Suspected Minor Injury</option>
+                    <option value="4">Suspected Serious Injury</option>
+                    <option value="5">Fatal</option>
+                </select>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label>County</label>
-        <select class="form-control" @onchange="@UpdateCounty">
-            @if (Counties?.Count() > 0)
-            {
-                <option value="all">All Counties</option>
-                @foreach (string county in Counties)
-                {
-                    <option value="@county">@county</option>
-                }
-            }
-            else
-            {
-                <option value="">Wait...</option>
-            }
-        </select>
+
+    <div class="parent">
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdatePedestrianInvolved" />
+                <label>Pedestrian Involved</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateBicyclistInvolved" />
+                <label>Bicyclist Involved</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateMotorcycleInvolved" />
+                <label>Motorcycle Involved</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateImproperRestraint" />
+                <label>Improper Restraint</label>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Crash Severity</label>
-        <select class="form-control" @onchange="@UpdateCrashSeverity">
-            <option value="">All</option>
-            <option value="1">No injury/PDO</option>
-            <option value="2">Possible injury</option>
-            <option value="3">Suspected Minor Injury</option>
-            <option value="4">Suspected Serious Injury</option>
-            <option value="5">Fatal</option>
-        </select>
+    <div class="parent">
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateUnrestrained" />
+                <label>Unrestrained</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateDUI" />
+                <label>DUI</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateIntersectionRelated" />
+                <label>Intersection Related</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateWildAnimalRelated" />
+                <label>Wild Animal Related</label>
+            </div>
+        </div>
+
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateDomesticAnimalRelated" />
+                <label>Domestic Animal Related</label>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Pedestrian Involved</label>
-        <input type="checkbox" @onchange="@UpdatePedestrianInvolved" />
+    <div class="parent">
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateOverturnRollover" />
+                <label>Overturn/Rollover</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateCommercialMotorVehInvolved" />
+                <label>Commercial Motor Vehicle Involved</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateTeenageDriverInvolved" />
+                <label>Teenage Driver Involved</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateOlderDriverInvolved" />
+                <label>Older Driver Involved</label>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Bicyclist Involved</label>
-        <input type="checkbox" @onchange="@UpdateBicyclistInvolved" />
-    </div>
-    <div class="form-group">
-        <label>Motorcycle Involved</label>
-        <input type="checkbox" @onchange="@UpdateMotorcycleInvolved" />
-    </div>
-    <div class="form-group">
-        <label>Improper Restraint</label>
-        <input type="checkbox" @onchange="@UpdateImproperRestraint" />
-    </div>
-    <div class="form-group">
-        <label>Unrestrained</label>
-        <input type="checkbox" @onchange="@UpdateUnrestrained" />
-    </div>
-    <div class="form-group">
-        <label>DUI</label>
-        <input type="checkbox" @onchange="@UpdateDUI" />
-    </div>
-    <div class="form-group">
-        <label>Intersection Related</label>
-        <input type="checkbox" @onchange="@UpdateIntersectionRelated" />
-    </div>
-    <div class="form-group">
-        <label>Wild Animal Related</label>
-        <input type="checkbox" @onchange="@UpdateWildAnimalRelated" />
-    </div>
-    <div class="form-group">
-        <label>Domestic Animal Related</label>
-        <input type="checkbox" @onchange="@UpdateDomesticAnimalRelated" />
-    </div>
-    <div class="form-group">
-        <label>Overturn/Rollover</label>
-        <input type="checkbox" @onchange="@UpdateOverturnRollover" />
-    </div>
-    <div class="form-group">
-        <label>Commercial Motor Vehicle Involved</label>
-        <input type="checkbox" @onchange="@UpdateCommercialMotorVehInvolved" />
-    </div>
-    <div class="form-group">
-        <label>Teenage Driver Involved</label>
-        <input type="checkbox" @onchange="@UpdateTeenageDriverInvolved" />
-    </div>
-    <div class="form-group">
-        <label>Older Driver Involved</label>
-        <input type="checkbox" @onchange="@UpdateOlderDriverInvolved" />
-    </div>
-    <div class="form-group">
-        <label>Night/Dark Conditions</label>
-        <input type="checkbox" @onchange="@UpdateNightDarkCondition" />
-    </div>
-    <div class="form-group">
-        <label>Single Vehicle</label>
-        <input type="checkbox" @onchange="@UpdateSingleVehicle" />
-    </div>
-    <div class="form-group">
-        <label>Distracted Driving</label>
-        <input type="checkbox" @onchange="@UpdateDistractedDriving" />
-    </div>
-    <div class="form-group">
-        <label>Drowsy Driving</label>
-        <input type="checkbox" @onchange="@UpdateDrowsyDriving" />
-    </div>
-    <div class="form-group">
-        <label>Roadway Departure</label>
-        <input type="checkbox" @onchange="@UpdateRoadwayDeparture" />
+
+    <div class="parent">
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateNightDarkCondition" />
+                <label>Night/Dark Conditions</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateSingleVehicle" />
+                <label>Single Vehicle</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateDistractedDriving" />
+                <label>Distracted Driving</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateDrowsyDriving" />
+                <label>Drowsy Driving</label>
+            </div>
+        </div>
+        <div class="child">
+            <div class="form-group">
+                <input type="checkbox" @onchange="@UpdateRoadwayDeparture" />
+                <label>Roadway Departure</label>
+            </div>
+        </div>
     </div>
 </div>
+<br /><br />
 
-<div class="col-9">
+
+<div class="">
+    <h2>Utah Car Crash Database</h2>
     <table class="table table-sm table-striped table-bordered">
 
         <thead>
@@ -161,6 +220,9 @@
                 <button class="btn btn-primary">Page @pageNum</button>
                 <button class="btn btn-outline-primary" @onclick="@Next">Next</button>
                 <button class="btn btn-outline-primary" @onclick="@Last">Last Page</button> -->
+
+
+
         </thead>
 
         <tbody>
@@ -197,7 +259,7 @@
     </table>
 
     <NavLink class="btn btn-primary" href="/admin/crashes/create">Create</NavLink>
-    <br />
+    <br /><br />
     <div class="float-right">
         <button class="btn btn-outline-primary" @onclick="@First">Page 1</button>
         <button class="btn btn-outline-primary" @onclick="@Previous">Previous</button>

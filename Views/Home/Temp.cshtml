@@ -1,59 +1,67 @@
 ﻿@{
+    ViewBag.Title = "UT Crashes";
 }
 
 @model CrashesViewModel
 
-<table class="table table-sm table-striped table-bordered">
+<div class="container text-center rounded shadow-lg" style="background-color: white; padding: 30px;">
+    <h2>Utah Car Crash Database</h2>
 
-    <thead>
-        <tr>
-            <th>Accident Date</th>
-            <th>Accident City</th>
-            <th>Road Name</th>
-            <th>Accident Severity</th>
-        </tr>
-    </thead>
+    <table class="table table-sm table-striped table-bordered">
 
-    <tbody>
-        @if (Model.Crashes?.Count() > 0)
-        {
-            @foreach (Crash c in Model.Crashes)
+        <thead>
+            <tr>
+                <th>Accident Date</th>
+                <th>Accident City</th>
+                <th>Road Name</th>
+                <th>Accident Severity</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model.Crashes?.Count() > 0)
+            {
+                @foreach (Crash c in Model.Crashes)
+                {
+                    <tr>
+                        <td>@c.CRASH_DATETIME</td>
+                        <td>@c.CITY</td>
+                        <td>@c.MAIN_ROAD_NAME</td>
+                        @if (c.CRASH_SEVERITY_ID == 1)
+                        {
+                            <td>No Injury/PDO</td>
+                        }
+                        else if (c.CRASH_SEVERITY_ID == 2)
+                        {
+                            <td>Possible Injury</td>
+                        }
+                        else if (c.CRASH_SEVERITY_ID == 3)
+                        {
+                            <td>Suspected Minor Injury</td>
+                        }
+                        else if (c.CRASH_SEVERITY_ID == 4)
+                        {
+                            <td>Suspected Serious Injury</td>
+                        }
+                        else
+                        {
+                            <td>Fatal</td>
+                        }
+                    </tr>
+                }
+            }
+            else
             {
                 <tr>
-                    <td>@c.CRASH_DATETIME</td>
-                    <td>@c.CITY</td>
-                    <td>@c.MAIN_ROAD_NAME</td>
-                    @if (c.CRASH_SEVERITY_ID == 1)
-                    {
-                        <td>No Injury/PDO</td>
-                    }
-                    else if (c.CRASH_SEVERITY_ID == 2)
-                    {
-                        <td>Possible Injury</td>
-                    }
-                    else if (c.CRASH_SEVERITY_ID == 3)
-                    {
-                        <td>Suspected Minor Injury</td>
-                    }
-                    else if (c.CRASH_SEVERITY_ID == 4)
-                    {
-                        <td>Suspected Serious Injury</td>
-                    }
-                    else
-                    {
-                        <td>Fatal</td>
-                    }
+                    <td colespan="5" class="text-center">No Crashes</td>
                 </tr>
             }
-        }
-        else
-        {
-            <tr>
-                <td colespan="5" class="text-center">No Crashes</td>
-            </tr>
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<div page-num="@Model.PageInfo" page-action="Temp" page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
-     page-class-selected="btn-primary" class="btn-group float-right m-1"></div>
+    <div page-num="@Model.PageInfo" page-action="Temp" page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-primary" class="btn-group float-right m-1"></div>
+    <br />
+
+</div>
+
